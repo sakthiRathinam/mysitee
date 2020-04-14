@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="container">
+		<div class="text-right">
+			<input type="text" placeholder="search PO number" >
+			<button type="submit"><i class="fa fa-search"></i></button>
+			<button class="btn btn-primary" type="submit">previous</button>
+			<button class="btn btn-primary" type="submit">next</button>
+		</div>
+	<table class="table" id="makeeditable">
+	  <thead class="thead-light">
+	    <tr>
+	      <th scope="col">S.No</th>
+	      <th scope="col">ID</th>
+	      <th scope="col">PO Number</th>
+	      <th scope="col">Name</th>
+	      <th scope="col">Person Name</th>
+	      <th scope="col">Email</th>
+	      <th scope="col">Phone</th>
+	      <th scope="col">IS Invoice</th>
+	      <th scope="col">Address</th>
+	      <th scope="col">Status</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <td>1</td>
+	      <td>123</td>
+	      <td>34555</td>
+	      <td>ratnam</td>
+	      <td>sakthi</td>
+	      <td>sakthiratnam@email.com</td>
+	      <td>9229356457</td>
+	      <td>yes</td>
+	      <td>bangalore</td>
+	      <td>sent</td>
+	      <td><i class="fa fa-edit"></i>
+	      <i class="fa fa-info"></i>
+	      <i class="fa fa-trash"></i> 
+	  	  </td>
+	    </tr>
+	  </tbody>
+	</table>
+
+{% endblock content %}
