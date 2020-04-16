@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -6,6 +6,14 @@ from .models import inVoice
 from .forms import createForm
 from .filters import poFilter
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+import csv
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import cm
+import io
+from reportlab.lib import colors
+from django.template.loader import get_template
+from .utils import render_to_pdf
+from rest_framework.views import APIView
 def home(request):
 	count=User.objects.count()
 	return render(request,'home.html',{'count':count})
@@ -59,3 +67,20 @@ def deleteOrder(request,name):
 	data=inVoice.objects.get(name=name)
 	data.delete()
 	return redirect('form')
+def excelUpload(request):
+	items=inVoice.objects.all()
+	response=HttpResponse(content_type='text/csv')
+	response['Content-Disposition']='attachment; filename="invoice.csv"'
+	writer=csv.writer(response)
+	writer.writerow(['PoNumber','Name','PersonName','PhoneNumber','Email','Address','Status'])
+	for user in items:
+		writer.writerow([user.ponumber,user.name,user.personName,user.phoneNumber,user.email,user.address,user.status])
+	return response
+def pdfDownload(request):
+	items=inVoice.objects.all()
+	template=get_template('invoice.html')
+	context={'posts':items}
+	html=template.render(context)
+	pdf=render_to_pdf('invoice.html',context)
+	return HttpResponse(pdf,content_type='application/pdf')
+	return response

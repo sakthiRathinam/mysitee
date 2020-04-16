@@ -6,7 +6,9 @@
 				{{myFilter.form}}
 				<button type="submit"><i class="fa fa-search"></i></button>
 			</form>
-			<a href="{% url 'create'%}" class="btn btn-dark btn-sn btn-block">CreateInvoice</a>
+			<a href="{% url 'create'%}" class="btn btn-dark ">CreateInvoice</a>
+			<a href="{% url 'excel' %}" class="btn btn-primary">ExcelDownload</a>
+			<a href="{% url 'pdf' %}" class="btn btn-primary">PdfDownload</a>
 		</div>
 	<table class="table" id="makeeditable">
 	  <thead class="thead-light">

@@ -1,0 +1,37 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">ID</th>
+	      <th scope="col">PO Number</th>
+	      <th scope="col">Name</th>
+	      <th scope="col">Person Name</th>
+	      <th scope="col">Email</th>
+	      <th scope="col">Phone</th>
+	      <th scope="col">Address</th>
+	      <th scope="col">Status</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	{% for i in posts %}
+		    <tr>
+		      <td>{{forloop.counter}}</td>
+		      <td>{{i.ponumber}}</td>
+		      <td>{{i.name}}</td>
+		      <td>{{i.personName}}</td>
+		      <td>{{i.email}}</td>
+		      <td>{{i.phoneNumber}}</td>
+		      <td></td>
+		      <td>{{i.status}}</td>
+		  </tr>
+		</tbody>
+	</table>
+</body>
+</html>
